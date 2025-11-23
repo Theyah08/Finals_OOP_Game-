@@ -25,16 +25,20 @@ public class RockPaperScissors extends GameBase {
             System.out.println("======================================");
             System.out.println("1. Play Game");
             System.out.println("2. History");
-            System.out.println("3. Exit");
+            System.out.println("3. Clear History");
+            System.out.println("4. Exit");
             System.out.println("======================================");
             System.out.print("Enter your choice: ");
 
             String choice = sc.nextLine(); // Read menu choice
 
             switch (choice) {
-                case "1": play(); break;           // Start a game
+                case "1": play(); break;                  // Start a game
                 case "2": viewPlayerHistoryById(); break; // Show player history
-                case "3":                           // Exit game
+                case "3":                              
+                    scoreboard.clearHistory();           // Clear all history
+                    break;
+                case "4":                              
                     System.out.println("Goodbye! Thanks for playing!");
                     return;
                 default:
