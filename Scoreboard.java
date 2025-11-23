@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +85,17 @@ public class Scoreboard {
 
     players.add(newPlayer);
     return newPlayer;
-}
+    }
+
+    public void clearHistory() {
+    players.clear(); // Clear in-memory player list
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter("history.txt"))) {
+        // Overwrite the file with nothing
+        bw.write("");
+        System.out.println("All history has been cleared successfully!\n");
+    } catch (IOException e) {
+        System.out.println("Error clearing history: " + e.getMessage());
+    }
+    }
 
 }
